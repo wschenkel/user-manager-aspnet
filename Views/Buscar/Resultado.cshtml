@@ -1,0 +1,45 @@
+﻿@model IEnumerable<GerenciadorUsuarios.Usuario>
+
+@{
+    ViewBag.Title = "Resultado";
+}
+
+<p>
+    @Html.ActionLink("Voltar", "Index", "Buscar", new { @class="btn btn-default btn-voltar"})
+</p>
+
+<div class="content-table">
+    <div class="v-align">
+        <h4 class="align-center">Resultado da busca: </h4>
+        <table class="table table-center">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nome)
+                </th>
+                <th>
+                    Permissão
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nome)
+                    </td>
+
+                    <td>
+                        @{
+                            foreach (var direito in item.Direitos)
+                            {
+                                @direito.Nome
+                            }
+                        }
+                    </td>
+                </tr>
+             }
+        </table>
+    </div>
+</div>
+
+

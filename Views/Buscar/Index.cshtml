@@ -1,0 +1,60 @@
+﻿@model IEnumerable<GerenciadorUsuarios.Usuario>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="content-table">
+    <div class="v-align">
+
+
+        @using (Html.BeginForm("BuscarContato", "Buscar", FormMethod.Post, new { id = "formBuscar", @class= "form-inline" }))
+        {
+            <div class="form-group">
+                <input type="text" name="nome" class="form-control" id="Buscar" placeholder="Nome usuário">
+            </div>
+            <div class="form-group">
+                <select class="form-control" name="selDireito">
+                    <option value="user">User</option>
+                    <option value="admin">Admin</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-default">Buscar</button>
+        }
+
+        <table class="table table-center">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nome)
+                </th>
+                <th>
+                   Permissão
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nome)
+                    </td>
+
+                    <td>
+                        @{ 
+                            foreach (var direito in item.Direitos)
+                            {
+                                @direito.Nome
+                            }
+                        }
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Voltar", "Index", "Menu", new { @class="btn btn-default btn-voltar"})
+    <a href="http://localhost/GerenciadorUsuarios/Menu/Index" class="btn btn-default btn-voltar">Voltar</a>
+</div>

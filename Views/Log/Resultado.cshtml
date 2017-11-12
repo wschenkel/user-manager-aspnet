@@ -1,0 +1,49 @@
+﻿@model IEnumerable<GerenciadorUsuarios.Log>
+
+@{
+    ViewBag.Title = "Resultado";
+}
+
+<p>
+    @Html.ActionLink("Voltar", "Index", "Buscar", new { @class = "btn btn-default btn-voltar" })
+</p>
+
+<div class="content-table">
+    <div class="v-align">
+        <h4 class="text-center">Resultado</h4>
+        <table class="table table-center">
+            <tr>
+                <th>
+                    Nome
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Acao)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DataAcao)
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @{
+                            foreach (var nome in item.Usuario.Nome)
+                            {
+                                @nome.ToString();
+                            }
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Acao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DataAcao)
+                    </td>
+                </tr>
+             }
+        </table>
+    </div>
+</div>
+

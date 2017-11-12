@@ -1,0 +1,60 @@
+﻿@model IEnumerable<GerenciadorUsuarios.Log>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="content-table">
+    <div class="v-align">
+        <h4 class="text-center">Consulta logs</h4>
+
+        @using (Html.BeginForm("BuscarLog", "Log", FormMethod.Post, new { id = "formBuscar", @class = "form-inline" }))
+        {
+            
+            <div class="form-group">
+                <input type="text" name="nome" class="form-control" id="Buscar" placeholder="Nome usuário">
+            </div>
+            <button type="submit" class="btn btn-default">Buscar</button>
+        }
+
+        <table class="table table-center">
+            <tr>
+                <th>
+                    Nome
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Acao)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DataAcao)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                       @{ 
+                           foreach (var nome in item.Usuario.Nome)
+                           {
+                               @nome
+                           }
+                       }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Acao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DataAcao)
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Voltar", "Index", "Menu", new { @class = "btn btn-default btn-voltar" })
+    <a href="http://localhost/GerenciadorUsuarios/Menu/Index" class="btn btn-default btn-voltar">Voltar</a>
+</div>

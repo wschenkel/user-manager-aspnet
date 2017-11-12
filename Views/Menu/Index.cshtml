@@ -1,0 +1,80 @@
+﻿@model IEnumerable<GerenciadorUsuarios.Usuario>
+
+@{
+    ViewBag.Title = "Index";
+}
+<a href="http://localhost/GerenciadorUsuarios/Log/Index" class="btn btn-default btn-logs">Logs</a>
+<a href="http://localhost/GerenciadorUsuarios/Buscar/Index" class="btn btn-default btn-consulta-usuarios">Buscar usuários</a>
+<a href="http://localhost/GerenciadorUsuarios/Menu/Logout" class="btn btn-default btn-sair">Sair</a>
+<div class="content-table">
+    <div class="v-align">
+        <h2 class="align-center">Usuarios</h2>
+        <table class="table table-center">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.idUsuario)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Login)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Senha)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+
+                <th>
+                    Permissão
+                </th>
+                <th style="text-align: center;">
+                    Ações
+                </th>
+            </tr>
+
+             @foreach (var item in Model)
+             {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.idUsuario)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Login)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Senha)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+
+                    <td>
+                        @{
+                            foreach (var direito in item.Direitos)
+                            {
+                                @direito.Nome
+                            }
+                        }
+                    </td>
+
+                    <td>
+                        @{
+                            if ((Session["logado"].Equals("true")) && (Session["admin"].Equals("true")))
+                            {
+                                @Html.ActionLink("Editar", "Edit", new { id = item.idUsuario }, new { @class = "btn btn-default" })
+                                @Html.ActionLink("Deletar", "Delete", new { id = item.idUsuario }, new { @class = "btn btn-danger" })
+                            }
+                        }
+                    </td> 
+                </tr>
+             }
+        </table>
+    </div>
+</div>
+

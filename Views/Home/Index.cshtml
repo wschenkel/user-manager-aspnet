@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="content-table">
+    <div class="v-align">
+        @Html.ActionLink("Cadastre-se", "Cadastro", "Home", new { @class="btn btn-default btn-cadastro" })
+
+        @using (Html.BeginForm("Login", "Home", FormMethod.Post, new { id = "formLogin" }))
+        {
+            <div class="form-group">
+                <label for="usuario">Usuário</label>
+                <input type="text" name="Login" class="form-control" id="usuario" placeholder="Usuario" required>
+            </div>
+            <div class="form-group">
+                <label for="senha">Senha</label>
+                <input type="password" name="Senha" class="form-control" id="senha" placeholder="Senha" required>
+            </div>
+            <button type="submit" class="btn btn-default">Entrar</button>
+        }
+    </div>
+</div>

@@ -1,0 +1,78 @@
+﻿* {
+    box-sizing: border-box;
+}
+
+html,
+body,
+main {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.content-table {
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+
+.v-align {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.align-center {
+    text-align: center;
+}
+
+#formLogin {
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+#formEdit,
+#formCadastro {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+#formBuscar {
+    width: 800px;
+    margin: 0 auto 15px;
+} 
+
+.btn-cadastro {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+.btn-voltar {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+}
+
+.table-center {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.btn-consulta-usuarios {
+    position: absolute;
+    right: 75px;
+    top: 15px;
+}
+
+.btn-sair {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+}
+
+.btn-logs {
+    position: absolute;
+    top: 15px;
+    right: 210px;
+}
